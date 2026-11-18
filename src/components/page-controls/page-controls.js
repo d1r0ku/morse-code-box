@@ -26,6 +26,16 @@ export function createPageControls() {
             class="page-controls__theme"
             type="button"
         ></button>
+		
+		<a
+		    class="page-controls__repo"
+		    href="https://github.com/d1r0ku/morse-code-box"
+		    target="_blank"
+		    rel="noopener noreferrer"
+		    aria-label="Version 1 — View source code on GitHub"
+		>
+		    v1 — repo
+		</a>
     `;
 	
 	const themeButton = controls.querySelector(
