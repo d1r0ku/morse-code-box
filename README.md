@@ -12,7 +12,7 @@ Una cajita para aprender código morse en un pequeño paisaje dreamcore.
 
 Versión 1.0 · By [Soku](https://github.com/d1r0ku)
 
-<!-- añadir aquí el enlace real cuando GitHub Pages esté publicado -->
+✮ [Abrir la página](https://d1r0ku.github.io/morse-code-box/) ✮
 
 </div>
 
