@@ -27,6 +27,15 @@ export function createPracticePanel() {
             </div>
 
             <div class="practice-panel__actions">
+				<button
+				    class="practice-panel__button"
+				    type="button"
+				    data-action="backspace"
+				    aria-label="Delete the last character"
+				>
+				    Backspace
+				</button>
+				
                 <button
                     class="practice-panel__button"
                     type="button"
@@ -63,6 +72,10 @@ export function createPracticePanel() {
 	const placeholder = panel.querySelector(
 		'.practice-panel__placeholder'
 	);
+
+	const backspaceButton = panel.querySelector(
+    '[data-action="backspace"]'
+	);
 	
 	const deleteButton = panel.querySelector(
 		'[data-action="delete"]'
@@ -94,11 +107,25 @@ export function createPracticePanel() {
 		text += ' ';
 		render();
 	}
+
+	function removeLastCharacter() {
+    if (text.length === 0) return;
+
+    text = text.slice(0, -1);
+
+    render();
+	}
 	
 	function clear() {
 		text = '';
 		render();
 	}
+
+	backspaceButton.addEventListener('click', () => {
+    panel.dispatchEvent(new CustomEvent('practice-backspace-request', {
+        bubbles: true
+	    }));
+	});
 	
 	deleteButton.addEventListener('click', clear);
 	
@@ -109,8 +136,9 @@ export function createPracticePanel() {
 	});
 	
 	return {
-		element: panel,
-		appendLetter,
-		appendSpace
+	    element: panel,
+	    appendLetter,
+	    appendSpace,
+	    removeLastCharacter
 	};
 }
