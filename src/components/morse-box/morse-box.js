@@ -96,6 +96,16 @@ export function createMorseBox() {
 			bubbles: true
 		}));
 	});
+
+		box.addEventListener('morse-backspace-request', () => {
+	    const canEdit = decoder.flush();
+	
+	    if (!canEdit) return;
+	
+	    box.dispatchEvent(new CustomEvent('morse-backspace', {
+	        bubbles: true
+	    }));
+	});
 	
 	bindMorseInput(key, {
 		onStart: () => {
