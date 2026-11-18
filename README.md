@@ -10,7 +10,7 @@ Una cajita para aprender código morse en un pequeño paisaje dreamcore.
 
 `· — — ` `· — ` `— · — ` `·` / `· · — ` `· — — ·`
 
-Versión 1.0 · By soku
+Versión 1.0 · By [Soku](https://github.com/d1r0ku)
 
 <!-- añadir aquí el enlace real cuando GitHub Pages esté publicado -->
 
@@ -189,10 +189,10 @@ morse-code-box/
 
 ˚₊ ‧꒰ა ♡ ໒꒱ ‧₊˚
 
-Hecho por soku
+#morsecode #dreamcore #nostalgic #eerie #creepy #liminal
 
 *Teach them something before they lose their soul — YG Marley*
 
-<!-- añadir aquí el enlace al perfil correcto -->
+[Soku](https://github.com/d1r0ku) ˚˖𓍢ִ໋❀
 
 </div>
