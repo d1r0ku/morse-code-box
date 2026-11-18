@@ -1,0 +1,79 @@
+#app {
+	width: 100%;
+	max-width: 1440px;
+	min-height: calc(100vh - clamp(12px, 2vw, 24px) * 2);
+	min-height: calc(100svh - clamp(12px, 2vw, 24px) * 2);
+
+	margin-inline: auto;
+	padding: 16px 20px;
+
+	border: 1.5px solid var(--line);
+	border-radius: 28px;
+
+	transition: border-color 0.6s ease;
+
+	display: flex;
+	flex-direction: column;
+
+	position: relative;
+	isolation: isolate;
+}
+
+.workspace {
+	display: grid;
+	grid-template-columns: minmax(0, 0fr) minmax(0, 1fr);
+	align-items: center;
+	column-gap: 0;
+
+	margin-top: 16px;
+	padding-inline: 36px;
+
+	transition:
+			grid-template-columns 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+			column-gap 0.65s ease;
+
+	flex-shrink: 0;
+}
+
+.workspace.is-practice-open {
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	column-gap: 24px;
+}
+
+.workspace > .morse-box {
+	justify-self: center;
+}
+
+@media (max-width: 600px) {
+	#app {
+		padding: 16px 10px;
+		border-radius: 22px;
+	}
+
+	.workspace {
+		padding-inline: 0 36px;
+	}
+}
+
+@media (max-width: 700px) {
+	.workspace,
+	.workspace.is-practice-open {
+		grid-template-columns: minmax(0, 1fr);
+		column-gap: 0;
+		row-gap: 0;
+	}
+
+	.workspace > .morse-box {
+		grid-column: 1;
+		grid-row: 1;
+	}
+
+	.practice-panel {
+		grid-column: 1;
+		grid-row: 2;
+	}
+
+	.workspace.is-practice-open {
+		row-gap: 20px;
+	}
+}

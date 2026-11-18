@@ -1,0 +1,259 @@
+.morse-box {
+	position: relative;
+	width: min(
+			100%,
+			600px,
+			max(220px, calc((100svh - 380px) * 1.03448))
+	);
+
+	flex-shrink: 0;
+
+	color: var(--text);
+	background-color: var(--surface);
+	border: 1.5px solid var(--line);
+	border-radius: 28px;
+
+	transition:
+			background-color 0.8s ease,
+			border-color 0.6s ease,
+			color 0.6s ease;
+
+	--surface: var(--panel-face);
+	--surface-soft: var(--panel-soft);
+	--text: var(--panel-ink);
+	--muted: var(--panel-muted);
+	--line: var(--panel-line);
+}
+
+.morse-box__diagram {
+	aspect-ratio: 600 / 580;
+}
+
+.morse-box__controls {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 8px;
+
+	padding: 12px;
+	border-top: 1.5px solid var(--line);
+
+	transition:
+			color 0.6s ease,
+			background-color 0.8s ease,
+			border-color 0.6s ease;
+
+	color: var(--panel-trim-text);
+	background-color: var(--panel-trim);
+
+	border-radius: 0 0 26px 26px;
+}
+
+.morse-box__key {
+	display: grid;
+	place-items: center;
+
+	width: 64px;
+	height: 44px;
+	padding: 5px;
+
+	color: var(--panel-ink);
+	background-color: var(--surface-soft);
+	border: 1.5px solid currentColor;
+	border-radius: 999px;
+	cursor: pointer;
+
+	touch-action: none;
+	user-select: none;
+
+	transition:
+			transform 0.15s ease,
+			background-color 0.6s ease;
+}
+
+.morse-box__key-center {
+	width: 40px;
+	height: 28px;
+
+	background-color: var(--surface);
+	border: 1.5px solid currentColor;
+	border-radius: 999px;
+
+	transition: background-color 0.6s ease;
+}
+
+.morse-box__key:active,
+.morse-box__key.is-pressed {
+	transform: scale(0.94);
+	background-color: var(--accent);
+}
+
+.morse-box__key.is-pressed .morse-box__key-center {
+	background-color: var(--accent);
+}
+
+.morse-box__instructions {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+
+	margin: 0;
+	text-align: center;
+	line-height: 1.25;
+}
+
+.morse-box__instructions span:first-child {
+	font-size: clamp(1rem, 2vw, 1.4rem);
+}
+
+.morse-box__instructions span:last-child {
+	color: inherit;
+	opacity: 0.85;
+	font-size: clamp(0.75rem, 1.5vw, 1rem);
+}
+
+.morse-box__tab {
+	--tab-stretch: 0px;
+	position: absolute;
+	top: 45%;
+	left: calc(100% + 1.5px);
+
+	display: grid;
+	place-items: center;
+
+	width: calc(36px + var(--tab-stretch, 0px));
+	height: 46px;
+	padding: 0;
+
+	color: inherit;
+	background-color: var(--surface);
+	border: 1.5px solid var(--line);
+	border-left: 0;
+	border-radius: 0 999px 999px 0;
+
+	font-size: 1.75rem;
+	line-height: 1;
+	cursor: pointer;
+
+	transition:
+			width 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+			background-color 0.6s ease,
+			color 0.2s ease;
+}
+
+.morse-box__tab:hover {
+	color: var(--accent);
+}
+
+.morse-diagram {
+	display: block;
+	width: 100%;
+	height: 100%;
+	color: var(--text);
+}
+
+.morse-diagram__connection {
+	fill: none;
+	stroke: var(--line);
+	stroke-width: 1.8;
+	stroke-linecap: round;
+}
+
+.morse-diagram__shape,
+.morse-diagram__origin {
+	fill: var(--surface);
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linejoin: round;
+}
+
+.morse-diagram__letter {
+	fill: currentColor;
+	font-family: var(--font);
+	font-size: 24px;
+	font-weight: 400;
+	text-anchor: middle;
+	dominant-baseline: central;
+}
+
+.morse-box__tab-icon {
+	display: block;
+	width: 22px;
+	height: 22px;
+
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.8;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.morse-diagram__connection {
+	transition: stroke 0.15s ease;
+}
+
+.morse-diagram__shape {
+	transition:
+			fill 0.3s ease,
+			stroke 0.15s ease;
+}
+
+.morse-diagram__origin {
+	transition:
+			fill 0.3s ease,
+			stroke 0.3s ease;
+}
+
+.morse-diagram__letter {
+	transition: fill 0.15s ease;
+}
+
+.morse-diagram__connection.is-active {
+	stroke: var(--accent);
+	stroke-width: 3;
+}
+
+.morse-diagram__node.is-active .morse-diagram__shape {
+	stroke: var(--accent);
+}
+
+.morse-diagram__node.is-current .morse-diagram__shape {
+	fill: var(--accent);
+	stroke: var(--text);
+}
+
+.morse-diagram__node.is-current .morse-diagram__letter {
+	fill: var(--accent);
+	font-weight: 600;
+}
+
+.morse-diagram__node.is-confirmed .morse-diagram__shape {
+	stroke-width: 3;
+}
+
+.morse-box.has-invalid-code .morse-box__key {
+	outline: 2px dashed var(--text);
+	outline-offset: 4px;
+}
+
+.morse-box__tab-icon {
+	transition: transform 0.3s ease;
+}
+
+.morse-box__tab[aria-expanded="true"] .morse-box__tab-icon {
+	transform: rotate(180deg);
+}
+
+.morse-box__tab.is-dragging {
+	cursor: grabbing;
+	transition: none;
+}
+
+.morse-box__tab.is-ready {
+	color: var(--accent);
+}
+
+.morse-box__tab-icon {
+	flex-shrink: 0;
+	pointer-events: none;
+}

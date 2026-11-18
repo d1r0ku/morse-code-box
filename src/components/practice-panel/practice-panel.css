@@ -1,0 +1,140 @@
+.practice-panel {
+	min-width: 0;
+	height: 0;
+	overflow: hidden;
+
+	opacity: 0;
+	visibility: hidden;
+
+	transition: opacity 0.35s ease;
+
+	--surface: var(--panel-face);
+	--surface-soft: var(--panel-soft);
+	--text: var(--panel-ink);
+	--muted: var(--panel-muted);
+	--line: var(--panel-line);
+}
+
+.workspace.is-practice-open .practice-panel {
+	height: auto;
+	opacity: 1;
+	visibility: visible;
+}
+
+.practice-panel__content {
+	padding: 4px;
+}
+
+.practice-panel__title {
+	margin: 0 0 12px;
+
+	color: var(--text);
+	font-size: clamp(1.25rem, 2.5vw, 2rem);
+	font-weight: 400;
+	text-align: center;
+}
+
+.practice-panel__paper {
+	position: relative;
+	height: clamp(140px, 28svh, 280px);
+
+	background-color: var(--surface);
+	border: 1.5px solid var(--line);
+	border-radius: 28px;
+
+	overflow: hidden;
+
+	transition:
+			background-color 0.8s ease,
+			border-color 0.6s ease,
+			box-shadow 0.8s ease;
+
+	box-shadow: inset 0 6px 0 var(--panel-trim);
+}
+
+.practice-panel__placeholder {
+	position: absolute;
+	top: 20px;
+	left: 24px;
+	right: 24px;
+
+	margin: 0;
+	color: var(--muted);
+	font-size: 1rem;
+
+	pointer-events: none;
+}
+
+.practice-panel__message {
+	height: 100%;
+	margin: 0;
+	padding: 20px 24px;
+
+	color: var(--text);
+	font-size: 1.25rem;
+	line-height: 44px;
+	letter-spacing: 0.08em;
+	overflow-wrap: anywhere;
+	white-space: pre-wrap;
+
+	background-image: repeating-linear-gradient(
+			to bottom,
+			transparent 0,
+			transparent 43px,
+			var(--line) 43px,
+			var(--line) 44px
+	);
+
+	background-origin: content-box;
+	background-clip: content-box;
+
+	overflow-y: auto;
+}
+
+.practice-panel__actions {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 12px;
+
+	margin-top: 16px;
+}
+
+.practice-panel__button {
+	min-width: 90px;
+	padding: 8px 20px;
+
+	color: var(--text);
+	background-color: var(--surface-soft);
+	border: 1.5px solid var(--line);
+	border-radius: 999px;
+
+	cursor: pointer;
+
+	transition:
+			transform 0.15s ease,
+			background-color 0.6s ease,
+			border-color 0.6s ease;
+}
+
+.practice-panel__button:not(:disabled):hover {
+	border-color: var(--accent);
+}
+
+.practice-panel__button:not(:disabled):active {
+	transform: scale(0.96);
+}
+
+.practice-panel__button:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+.practice-panel__button[data-action="space"] {
+	color: var(--panel-trim-text);
+	background-color: var(--panel-trim);
+}
+
+.practice-panel__button[data-action="space"]:hover {
+	border-color: var(--panel-ink);
+}

@@ -1,0 +1,139 @@
+.landscape {
+	--hill-far: #9aa77c;
+	--hill-middle: #7f925e;
+	--hill-front: #697e50;
+	--path: #ccc9a8;
+
+	--house-wall: #eee9d8;
+	--house-side: #c7c5b5;
+	--house-roof: #a94335;
+	--house-roof-side: #82382e;
+	--house-window: #29332f;
+	--house-frame: #d8d8c5;
+	--house-door: #686e5c;
+	--window-light: #29332f;
+
+	--sign-board: #d5ba54;
+	--sign-ink: #30352b;
+	--sign-post: #8a927f;
+
+	position: absolute;
+	right: 0;
+	bottom: 0;
+
+	width: max(100%, 900px);
+
+	pointer-events: none;
+}
+
+body.dark .landscape {
+	--hill-far: #354c48;
+	--hill-middle: #293e38;
+	--hill-front: #1c302b;
+	--path: #647269;
+
+	--house-wall: #929e94;
+	--house-side: #64796d;
+	--house-roof: #683e39;
+	--house-roof-side: #4e302e;
+	--house-window: #172723;
+	--house-frame: #718273;
+	--house-door: #40574a;
+	--window-light: #dac584;
+
+	--sign-board: #95854c;
+	--sign-ink: #1c2923;
+	--sign-post: #596c5e;
+}
+
+.landscape__drawing {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.landscape__hill,
+.landscape__path,
+.landscape__house-wall,
+.landscape__house-side,
+.landscape__house-roof,
+.landscape__window,
+.landscape__door {
+	transition: fill 1.2s ease;
+}
+
+.landscape__hill--far {
+	fill: var(--hill-far);
+}
+
+.landscape__hill--middle {
+	fill: var(--hill-middle);
+}
+
+.landscape__hill--front {
+	fill: var(--hill-front);
+}
+
+.landscape__path {
+	fill: var(--path);
+}
+
+.landscape__house-wall {
+	fill: var(--house-wall);
+}
+
+.landscape__house-side {
+	fill: var(--house-side);
+}
+
+.landscape__house-roof {
+	fill: var(--house-roof);
+}
+
+.landscape__window {
+	fill: var(--house-window);
+}
+
+.landscape__window--lit {
+	fill: var(--window-light);
+}
+
+.landscape__door {
+	fill: var(--house-door);
+}
+
+.landscape__window-frames {
+	fill: none;
+	stroke: var(--house-frame);
+	stroke-width: 1.5;
+
+	transition: stroke 1.2s ease;
+}
+
+.landscape__house-roof-side {
+	fill: var(--house-roof-side);
+	transition: fill 1.2s ease;
+}
+
+.landscape__sign-post {
+	fill: var(--sign-post);
+
+	transition: fill 1.2s ease;
+}
+
+.landscape__sign-board {
+	fill: var(--sign-board);
+	stroke: var(--sign-ink);
+	stroke-width: 2;
+	stroke-linejoin: round;
+
+	transition:
+			fill 1.2s ease,
+			stroke 1.2s ease;
+}
+
+.landscape__sign-arrow {
+	fill: var(--sign-ink);
+
+	transition: fill 1.2s ease;
+}

@@ -1,0 +1,120 @@
+.ambient {
+	position: absolute;
+	inset: 0px;
+	z-index: -1;
+
+	border-radius: 26.5px;
+	overflow: hidden;
+
+	pointer-events: none;
+}
+
+.ambient__scene {
+	--scene-x: 0px;
+	--scene-y: 0px;
+
+	position: absolute;
+	inset: -16px;
+
+	transform: translate3d(
+			var(--scene-x),
+			var(--scene-y),
+			0
+	);
+}
+
+@media (max-width: 600px) {
+	.ambient {
+		border-radius: 20.5px;
+	}
+}
+
+.ambient__sky {
+	position: absolute;
+	inset: 0;
+
+	transition: opacity 1.2s ease;
+}
+
+.ambient__sky--day {
+	background: linear-gradient(
+			180deg,
+			#94aec5 0%,
+			#bac9c5 58%,
+			#d8d8bd 100%
+	);
+
+	opacity: 1;
+}
+
+.ambient__sky--night {
+	background: linear-gradient(
+			180deg,
+			#101b25 0%,
+			#203632 48%,
+			#414747 100%
+	);
+
+	opacity: 0;
+}
+
+body.dark .ambient__sky--day {
+	opacity: 0;
+}
+
+body.dark .ambient__sky--night {
+	opacity: 1;
+}
+
+.ambient__sun,
+.ambient__moon {
+	position: absolute;
+	width: clamp(60px, 8vw, 100px);
+	aspect-ratio: 1;
+	border-radius: 50%;
+
+	transition:
+			top 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+			left 1.4s cubic-bezier(0.22, 1, 0.36, 1),
+			opacity 1s ease;
+}
+
+.ambient__sun {
+	top: 12%;
+	left: 82%;
+
+	background: radial-gradient(
+			circle at 40% 35%,
+			#f4edcb,
+			#d6c78d 75%
+	);
+
+	box-shadow: 0 0 60px 18px rgb(233 221 170 / 25%);
+	opacity: 0.8;
+}
+
+.ambient__moon {
+	top: 72%;
+	left: 14%;
+
+	background: radial-gradient(
+			circle at 40% 35%,
+			#e4e9d9,
+			#a8bdb5 80%
+	);
+
+	box-shadow: 0 0 45px 12px rgb(180 207 201 / 12%);
+	opacity: 0;
+}
+
+body.dark .ambient__sun {
+	top: 75%;
+	left: 75%;
+	opacity: 0;
+}
+
+body.dark .ambient__moon {
+	top: 16%;
+	left: 10%;
+	opacity: 0.85;
+}
