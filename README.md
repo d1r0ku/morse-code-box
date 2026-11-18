@@ -1,6 +1,6 @@
 <div align="center">
 
-˚₊‧꒰ა ✦ ໒꒱ ‧₊˚
+˚₊‧ ꒰ა ✦ ໒꒱ ‧₊˚
 
 # Morse code box
 
@@ -8,7 +8,7 @@
 
 Una cajita para aprender código morse en un pequeño paisaje dreamcore.
 
-`·` `—` `·` `·`
+`· — — ` `· — ` `— · — ` `·` / `· · — ` `· — — ·`
 
 Versión 1.0 · By soku
 
