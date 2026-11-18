@@ -67,6 +67,14 @@ box.addEventListener('morse-space', () => {
 	practice.appendSpace();
 });
 
+practice.element.addEventListener('practice-backspace-request', () => {
+    box.dispatchEvent(new CustomEvent('morse-backspace-request'));
+});
+
+box.addEventListener('morse-backspace', () => {
+    practice.removeLastCharacter();
+});
+
 workspace.append(practice.element, box);
 
 app.append(createHeader(), workspace, pageControls);
